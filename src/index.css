@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-forest: #1f3a2d;
+  --color-brand-olive: #556b2f;
+  --color-brand-brown: #5c4033;
+  --color-brand-gold: #c6a664;
+  --color-brand-cream: #f4f1ea;
+  --color-brand-ivory: #fcfbfa;
+  --color-brand-dark: #121d17;
+  --color-brand-moss: #2c4438;
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 12px rgba(198, 166, 100, 0.4);
+  }
+  
+  .glass-dark {
+    background: rgba(18, 29, 23, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-light {
+    background: rgba(252, 251, 250, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(31, 58, 45, 0.05);
+  }
+
+  .border-gold-subtle {
+    border-color: rgba(198, 166, 100, 0.2);
+  }
+
+  .map-hunting-map {
+    filter: sepia(0.4) hue-rotate(70deg) saturate(0.7) contrast(1.08) brightness(0.9);
+  }
+
+  .map-hunting-overlay {
+    background:
+      radial-gradient(ellipse at center, transparent 35%, rgba(18, 29, 23, 0.5) 100%),
+      linear-gradient(160deg, rgba(31, 58, 45, 0.2) 0%, rgba(44, 68, 56, 0.35) 50%, rgba(92, 64, 51, 0.15) 100%);
+    box-shadow: inset 0 0 24px rgba(18, 29, 23, 0.35);
+    border: 1px solid rgba(198, 166, 100, 0.15);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-ivory);
+  color: var(--color-brand-dark);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-forest);
+  border: 2px solid var(--color-brand-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold);
+}
+
+@keyframes drawLine {
+  from { width: 0; }
+  to { width: 100px; }
+}
+
+.animate-draw-line {
+  animation: drawLine 1s ease-out forwards;
+}
+

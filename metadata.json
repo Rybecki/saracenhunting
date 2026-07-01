@@ -1,0 +1,6 @@
+{
+  "name": "Saracen Hunting",
+  "description": "Exclusive hunting adventures, professional guiding, and premium accommodation in Poland, Norway, and across Europe.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
