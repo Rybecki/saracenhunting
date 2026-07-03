@@ -2,7 +2,7 @@ import { Language } from "./types";
 
 export const SITE_NAME = "Saracen Hunting";
 export const SITE_URL = "https://saracenhunting.pl";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/hero-bg.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export interface PageSeo {
   title: string;
