@@ -9,7 +9,7 @@ export const TENANTS: Tenant[] = [
     flag: "🇵🇱",
     email: "kontakt@saracenhunting.pl",
     phone: "+48 607 040 396",
-    address: "Kościuszki 99, 42-253 Złoty Potok, Poland"
+    address: "ul. Cmentarna 28, 44-341 Gołkowice, Poland"
   },
   {
     id: "saracen-no",
@@ -37,7 +37,7 @@ export const HUNT_OFFERS: HuntOffer[] = [
   {
     id: "hunt-deer",
     category: "deer",
-    priceEuro: 2450,
+    priceEuro: 350,
     durationDays: 4,
     image: "/offers/jelen.png",
     title: {
@@ -46,40 +46,20 @@ export const HUNT_OFFERS: HuntOffer[] = [
       no: "Majestetisk Kronhjortjakt"
     },
     subtitle: {
-      pl: "Rykowisko w puszczy podlaskiej",
-      en: "The roar of the stag in ancient forests",
-      no: "Hjortebrøl i urgamle skoger"
+      pl: "Rykowisko na Jurze Krakowsko-Częstochowskiej",
+      en: "September rut in the Kraków-Częstochowa Upland",
+      no: "September-brunst i Jurakrakowsko-Częstochowska"
     },
     description: {
-      pl: "Przeżyj najbardziej emocjonujące polowanie podczas wrześniowego rykowiska. Usłysz potężny ryk jeleni rozchodzący się o świcie w pradawnej puszczy i stań oko w oko z potężnymi bykami.",
-      en: "Experience the ultimate hunting rush during the September rut. Hear the thunderous roar of stags echoing at dawn in ancient woodlands, tracking mature trophies with elite guides.",
-      no: "Opplev det ultimate jaktkikket under hjortebrunsten i september. Hør det dundrende brølet fra kronhjorten som ekkoer ved daggry i eldgamle skoger, ledet av elitemessige guider."
-    },
-    specifications: {
-      pl: [
-        "Sugerowany kaliber: 7x64, .30-06, 8x57 JS",
-        "Średnia waga trofeum: 6.0 - 9.5 kg",
-        "Metoda: Z podchodu oraz z ambon",
-        "Najlepszy termin: 10 - 30 Września"
-      ],
-      en: [
-        "Suggested Caliber: 7x64, .30-06, 8x57 JS, .300 Win Mag",
-        "Average Trophy Weight: 6.0 - 9.5 kg",
-        "Method: Stalking & High Seat",
-        "Best Season: September 10th - 30th"
-      ],
-      no: [
-        "Foreslått kaliber: 7x64, .30-06, 8x57 JS",
-        "Gjennomsnittlig trofevekt: 6,0 - 9,5 kg",
-        "Metode: Snikjakt og høy jaktpost",
-        "Beste periode: 10. - 30. september"
-      ]
+      pl: "Przeżyj najbardziej emocjonujące polowanie podczas wrześniowego rykowiska. Usłysz potężny ryk jeleni rozchodzący się o świcie w jurajskich lasach i stań oko w oko z potężnymi bykami.",
+      en: "Experience the ultimate hunting rush during the September rut. Hear the thunderous roar of stags echoing at dawn in the Jurassic woodlands, tracking mature trophies with elite guides.",
+      no: "Opplev det ultimate jaktkikket under hjortebrunsten i september. Hør det dundrende brølet fra kronhjorten som ekkoer ved daggry i jurassiske skoger, ledet av elitemessige guider."
     }
   },
   {
     id: "hunt-boar",
     category: "wild_boar",
-    priceEuro: 1650,
+    priceEuro: 450,
     durationDays: 3,
     image: "/offers/dzik.png",
     title: {
@@ -96,32 +76,12 @@ export const HUNT_OFFERS: HuntOffer[] = [
       pl: "Polowanie o wysokim poziomie adrenaliny. Oferujemy zarówno dynamiczne polowania pędzone w zimowej aurze z psami, jak i nastrojowe nocne polowania przy pełni księżyca na potężne odyńce.",
       en: "A high-adrenaline hunting pursuit. We offer both highly dynamic driven winter hunts with experienced hounds, and silent, atmospheric night stalking under a full moon.",
       no: "En jakt full av adrenalin. Vi tilbyr både dynamisk drivjakt om vinteren med veltrente hunder, og stille måneskinnsjakt på store villsviner."
-    },
-    specifications: {
-      pl: [
-        "Sugerowany kaliber: 8x57 JS, 9.3x62, .30-06",
-        "Możliwość pozyskania medalowych odyńców",
-        "Metoda: Pędzona, podchód przy pełni",
-        "Najlepszy termin: Listopad - Styczeń"
-      ],
-      en: [
-        "Suggested Caliber: 8x57 JS, 9.3x62, .30-06, .308 Win",
-        "High chance for medal-class tuskers",
-        "Method: Driven hunts, Night stalking",
-        "Best Season: November - January"
-      ],
-      no: [
-        "Foreslått kaliber: 8x57 JS, 9.3x62, .30-06",
-        "Stor sjanse for medaljeklassetrosje",
-        "Metode: Drivjakt, Nattjakt",
-        "Beste periode: November - Januar"
-      ]
     }
   },
   {
     id: "hunt-roe",
     category: "roe_deer",
-    priceEuro: 1200,
+    priceEuro: 340,
     durationDays: 3,
     image: "/offers/sarna.png",
     title: {
@@ -138,26 +98,6 @@ export const HUNT_OFFERS: HuntOffer[] = [
       pl: "Wiosenny klasyk dla koneserów precyzyjnego strzału. Polowanie na rogacze w połowie maja, gdy łąki są soczyście zielone, a rzepaki zaczynają kwitnąć. Niezrównany urok majowych poranków.",
       en: "A spring classic for seekers of precise marksmanship. Hunt mature roe bucks in mid-May when the meadows are lush green and fields bloom, capturing the serene magic of spring mornings.",
       no: "En ekte vårklassiker for den kresne jeger. Jakt på modne råbukker i midten av mai når engene er frodige og grønne, og opplev den magiske stillheten i vårmorgenen."
-    },
-    specifications: {
-      pl: [
-        "Sugerowany kaliber: .243 Win, .223 Rem, 6.5x55",
-        "Średnia waga parostków: 300g - 550g",
-        "Metoda: Podchód i wabienie (ruja w lipcu)",
-        "Najlepszy termin: Połowa Maja / Koniec Lipca"
-      ],
-      en: [
-        "Suggested Caliber: .243 Win, .223 Rem, 6.5x55, .308 Win",
-        "Average Antler Weight: 300g - 550g",
-        "Method: Slow stalking and active calling",
-        "Best Season: Mid-May & Late July (Rut)"
-      ],
-      no: [
-        "Foreslått kaliber: .243 Win, .223 Rem, 6.5x55",
-        "Gjennomsnittlig gevirvekt: 300g - 550g",
-        "Metode: Rolig snikjakt og lokking",
-        "Beste periode: Midten av mai og slutten av juli"
-      ]
     }
   }
 ];
@@ -326,5 +266,77 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       en: "Mouflon trophy",
       no: "Mufflontrofé"
     }
+  },
+  {
+    id: "g-12",
+    url: "/hero-bg.png",
+    category: "group_hunts",
+    title: {
+      pl: "Polowanie w sercu polskiej przyrody",
+      en: "Hunting in the heart of Polish wilderness",
+      no: "Jakt i hjertet av polsk villmark"
+    }
+  },
+  {
+    id: "g-13",
+    url: "/hero/slide-2.png",
+    category: "traditions",
+    title: {
+      pl: "Rogacz — wspólne chwile na łowisku",
+      en: "Roe buck — shared moments in the field",
+      no: "Råbukk — felles øyeblikk i feltet"
+    }
+  },
+  {
+    id: "g-14",
+    url: "/hero/slide-3.png",
+    category: "traditions",
+    title: {
+      pl: "Majowy rogacz na łące",
+      en: "May roe buck in the meadow",
+      no: "Mai-råbukk på engen"
+    }
+  },
+  {
+    id: "g-15",
+    url: "/gallery/12-rogacz-las.png",
+    category: "traditions",
+    title: {
+      pl: "Rogacz — ostatnie poddanie czci",
+      en: "Roe buck — the hunter's tribute",
+      no: "Råbukk — jegerens hyllest"
+    }
+  },
+  {
+    id: "g-16",
+    url: "/gallery/13-rogacz-siano.png",
+    category: "traditions",
+    title: {
+      pl: "Rogacz o złotej porze",
+      en: "Roe buck at golden hour",
+      no: "Råbukk i gyllen time"
+    }
+  },
+  {
+    id: "g-17",
+    url: "/gallery/14-rogacze-para.png",
+    category: "traditions",
+    title: {
+      pl: "Dwa rogacze z wyprawy",
+      en: "Two roe bucks from the hunt",
+      no: "To råbukker fra jakten"
+    }
+  },
+  {
+    id: "g-18",
+    url: "/gallery/15-muflon-mysliwy.png",
+    category: "mouflon",
+    title: {
+      pl: "Muflon — trofeum w jesiennych lasach",
+      en: "Mouflon trophy in the autumn woods",
+      no: "Mufflon — trofé i høstskogen"
+    }
   }
 ];
+
+export const HOME_GALLERY_PREVIEW_IDS = ["g-1", "g-2", "g-14", "g-4"];

@@ -1,30 +1,47 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, Calendar, Clock, Euro, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Crown, Leaf, Shield, X } from "lucide-react";
 import { HuntOffer, Language } from "../types";
 import { HUNT_OFFERS } from "../data";
+import OffersNotes from "./OffersNotes";
 
 interface OffersProps {
   currentLang: Language;
-  translations: Record<string, any>;
+  translations: Record<string, string>;
   onContact: () => void;
+  variant?: "teaser" | "full";
 }
 
-export default function Offers({ currentLang, translations, onContact }: OffersProps) {
+export default function Offers({
+  currentLang,
+  translations,
+  onContact,
+  variant = "full",
+}: OffersProps) {
   const [selectedOffer, setSelectedOffer] = useState<HuntOffer | null>(null);
+  const isTeaser = variant === "teaser";
 
   const handleContactClick = () => {
     setSelectedOffer(null);
     onContact();
   };
 
+  const animalBadge: Record<
+    string,
+    { labelKey: string; Icon: typeof Crown }
+  > = {
+    "hunt-deer": { labelKey: "offers_animal_deer", Icon: Crown },
+    "hunt-boar": { labelKey: "offers_animal_boar", Icon: Shield },
+    "hunt-roe": { labelKey: "offers_animal_roe", Icon: Leaf },
+  };
+
   return (
-    <section id="offers" className="py-24 bg-brand-dark relative">
+    <section className={`py-24 bg-brand-dark relative ${isTeaser ? "" : "pt-28"}`}>
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-brand-forest/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-mono tracking-[0.25em] text-brand-gold uppercase font-bold block mb-2">
             {translations.offers_title}
@@ -35,12 +52,13 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
           <div className="h-[1px] w-24 bg-brand-gold mx-auto mt-4" />
         </div>
 
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {HUNT_OFFERS.map((offer) => (
+            {HUNT_OFFERS.map((offer) => {
+              const badge = animalBadge[offer.id];
+              const BadgeIcon = badge.Icon;
+
+              return (
               <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -51,15 +69,17 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
                 id={`offer-card-${offer.id}`}
                 className="group flex flex-col justify-between bg-brand-moss/30 rounded-lg overflow-hidden border border-brand-forest/40 hover:border-brand-gold/40 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-gold/5"
               >
-                <div className="relative overflow-hidden h-64">
+                <div className="relative overflow-hidden h-64 md:h-80">
                   <img
                     src={offer.image}
                     alt={offer.title[currentLang]}
-                    className="w-full h-full object-cover filter brightness-95 group-hover:scale-110 transition-transform duration-700"
+                    className={`w-full h-full object-cover filter brightness-95 group-hover:scale-110 transition-transform duration-700 ${
+                      offer.id === "hunt-roe" ? "object-center md:object-[center_40%]" : "object-center"
+                    }`}
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent" />
-                  
+
                   <div className="absolute top-4 right-4 bg-brand-dark/90 border border-brand-gold/30 rounded px-3 py-1.5 backdrop-blur-sm">
                     <span className="text-[10px] text-brand-cream/60 uppercase tracking-widest block text-right font-mono -mb-1">
                       {translations.offers_price_from}
@@ -69,9 +89,11 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
                     </span>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 flex items-center space-x-1 bg-brand-forest/80 border border-brand-cream/10 rounded px-2.5 py-1 text-xs text-brand-ivory font-mono backdrop-blur-sm">
-                    <Clock className="w-3.5 h-3.5 text-brand-gold" />
-                    <span>{offer.durationDays} {translations.offers_days}</span>
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-brand-forest/80 border border-brand-cream/10 rounded px-3 py-1.5 text-xs text-brand-ivory font-sans backdrop-blur-sm">
+                    <BadgeIcon className="w-4 h-4 text-brand-gold flex-shrink-0" />
+                    <span className="font-medium tracking-wide">
+                      {translations[badge.labelKey]}
+                    </span>
                   </div>
                 </div>
 
@@ -108,13 +130,28 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
                   </div>
                 </div>
               </motion.div>
-            ))}
+            );
+            })}
           </AnimatePresence>
         </motion.div>
 
+        <OffersNotes translations={translations} />
+
+        {isTeaser && (
+          <div className="text-center mt-14">
+            <Link
+              to="/oferta"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-gold text-brand-dark font-sans text-xs font-bold tracking-widest uppercase rounded shadow-2xl hover:bg-brand-ivory hover:text-brand-forest transition-colors duration-300"
+            >
+              {translations.offers_cta}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
+
         <AnimatePresence>
           {selectedOffer && (
-            <div 
+            <div
               id="offer-modal"
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-dark/90 backdrop-blur-md overflow-y-auto"
             >
@@ -133,14 +170,16 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
                   <X className="w-4 h-4" />
                 </button>
 
-                <div className="relative h-64 sm:h-80">
+                <div className="relative h-64 sm:h-80 md:h-96">
                   <img
                     src={selectedOffer.image}
                     alt={selectedOffer.title[currentLang]}
-                    className="w-full h-full object-cover filter brightness-75"
+                    className={`w-full h-full object-cover filter brightness-75 ${
+                      selectedOffer.id === "hunt-roe" ? "object-center md:object-[center_40%]" : "object-center"
+                    }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent" />
-                  
+
                   <div className="absolute bottom-6 left-6 right-6">
                     <span className="text-xs font-mono tracking-widest text-brand-gold uppercase font-bold">
                       {selectedOffer.category.replace("_", " ")}
@@ -164,31 +203,27 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
                     </p>
                   </div>
 
-                  <div>
-                    <h4 className="text-xs font-mono tracking-widest text-brand-cream/40 uppercase mb-3">
-                      Technical Specifications & Guidelines
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {selectedOffer.specifications[currentLang].map((spec, idx) => (
-                        <div key={idx} className="flex items-start space-x-2 text-xs text-brand-cream/95 font-light bg-brand-moss/15 rounded-md p-2.5 border border-brand-forest/20">
-                          <ShieldCheck className="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5" />
-                          <span>{spec}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                   <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-brand-forest/20 text-center">
                     <div>
-                      <span className="block text-[10px] font-mono uppercase text-brand-cream/40">Price Package</span>
-                      <span className="font-mono text-base font-bold text-brand-gold">€{selectedOffer.priceEuro}</span>
+                      <span className="block text-[10px] font-mono uppercase text-brand-cream/40">
+                        Price Package
+                      </span>
+                      <span className="font-mono text-base font-bold text-brand-gold">
+                        €{selectedOffer.priceEuro}
+                      </span>
                     </div>
                     <div>
-                      <span className="block text-[10px] font-mono uppercase text-brand-cream/40">Duration</span>
-                      <span className="font-mono text-base font-bold text-brand-gold">{selectedOffer.durationDays} Days</span>
+                      <span className="block text-[10px] font-mono uppercase text-brand-cream/40">
+                        Duration
+                      </span>
+                      <span className="font-mono text-base font-bold text-brand-gold">
+                        {selectedOffer.durationDays} Days
+                      </span>
                     </div>
                     <div>
-                      <span className="block text-[10px] font-mono uppercase text-brand-cream/40">Rating</span>
+                      <span className="block text-[10px] font-mono uppercase text-brand-cream/40">
+                        Rating
+                      </span>
                       <span className="font-mono text-base font-bold text-brand-gold">★★★★★</span>
                     </div>
                   </div>
@@ -214,7 +249,6 @@ export default function Offers({ currentLang, translations, onContact }: OffersP
             </div>
           )}
         </AnimatePresence>
-
       </div>
     </section>
   );

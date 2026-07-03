@@ -20,7 +20,6 @@ export interface HuntOffer {
   title: Record<Language, string>;
   subtitle: Record<Language, string>;
   description: Record<Language, string>;
-  specifications: Record<Language, string[]>;
 }
 
 export interface BookingInquiry {

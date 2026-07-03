@@ -31,8 +31,11 @@ export default function Contact({ currentLang, translations, selectedTenant }: C
     }, 5000);
   };
 
+  const phoneHref = `tel:${selectedTenant.phone.replace(/[\s()-]/g, "")}`;
+  const emailHref = `mailto:${selectedTenant.email}`;
+
   return (
-    <section id="contact" className="pt-8 pb-24 bg-brand-ivory relative overflow-hidden border-t border-brand-gold/15">
+    <section className="pt-8 pb-24 bg-brand-ivory relative overflow-hidden border-t border-brand-gold/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -47,7 +50,7 @@ export default function Contact({ currentLang, translations, selectedTenant }: C
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          <div className="lg:col-span-7 bg-brand-ivory border border-brand-forest/10 p-8 rounded-xl shadow-xl">
+          <div className="lg:col-span-7 bg-brand-cream/50 border-2 border-brand-forest/25 p-8 rounded-xl shadow-xl">
             {isSent ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -135,15 +138,20 @@ export default function Contact({ currentLang, translations, selectedTenant }: C
 
           <div className="lg:col-span-5 space-y-8">
             <div className="bg-brand-forest text-brand-ivory p-8 rounded-xl border border-brand-gold/20 shadow-xl space-y-6">
-              <div className="flex justify-center mb-8">
+              <div className="flex flex-col items-center mb-8 space-y-4">
                 <Logo size="md" />
+                <h3 className="text-xs font-mono tracking-[0.2em] text-brand-gold uppercase font-bold">
+                  {translations.contact_info_title}
+                </h3>
               </div>
               
               <div className="space-y-4">
                 <div className="flex items-start space-x-3.5 text-xs sm:text-sm font-light">
                   <MapPin className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-semibold uppercase font-mono text-[9px] text-brand-gold">Headquarters</span>
+                    <span className="block font-semibold uppercase font-mono text-[9px] text-brand-gold">
+                      {translations.contact_label_headquarters}
+                    </span>
                     <span>{selectedTenant.address}</span>
                   </div>
                 </div>
@@ -151,29 +159,39 @@ export default function Contact({ currentLang, translations, selectedTenant }: C
                 <div className="flex items-start space-x-3.5 text-xs sm:text-sm font-light">
                   <Phone className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-semibold uppercase font-mono text-[9px] text-brand-gold">Phone Coordinate</span>
-                    <span>{selectedTenant.phone}</span>
+                    <span className="block font-semibold uppercase font-mono text-[9px] text-brand-gold">
+                      {translations.contact_label_phone}
+                    </span>
+                    <a
+                      href={phoneHref}
+                      className="hover:text-brand-gold transition-colors"
+                    >
+                      {selectedTenant.phone}
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3.5 text-xs sm:text-sm font-light">
                   <Mail className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-semibold uppercase font-mono text-[9px] text-brand-gold">Official Email</span>
-                    <span>{selectedTenant.email}</span>
+                    <span className="block font-semibold uppercase font-mono text-[9px] text-brand-gold">
+                      {translations.contact_label_email}
+                    </span>
+                    <a
+                      href={emailHref}
+                      className="hover:text-brand-gold transition-colors break-all"
+                    >
+                      {selectedTenant.email}
+                    </a>
                   </div>
                 </div>
-              </div>
-
-              <div className="pt-6 border-t border-brand-gold/10 text-[10px] text-brand-cream/60 leading-relaxed">
-                * Our offices are available Mon-Fri, 08:00 - 18:00 CET. Stalkers and emergency coordination support is active 24/7 during planned hunting expeditions.
               </div>
             </div>
 
             <div className="bg-brand-ivory border border-brand-forest/10 rounded-xl p-4 shadow-xl overflow-hidden">
               <div className="relative h-56 rounded overflow-hidden border border-brand-forest/15">
                 <iframe
-                  src="https://www.google.com/maps?q=50.6984541,19.4210256&hl=pl&z=17&output=embed"
+                  src="https://www.google.com/maps?q=ul.+Cmentarna+28,+44-341+Go%C5%82kowice,+Poland&hl=pl&z=17&output=embed"
                   className="map-hunting-map w-full h-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -183,7 +201,7 @@ export default function Contact({ currentLang, translations, selectedTenant }: C
                 <div className="map-hunting-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
               </div>
               <p className="text-[10px] text-brand-dark/50 font-mono text-center mt-2 uppercase tracking-widest">
-                Kościuszki 99, 42-253 Złoty Potok · 50.6985° N, 19.4210° E
+                {selectedTenant.address}
               </p>
             </div>
 
