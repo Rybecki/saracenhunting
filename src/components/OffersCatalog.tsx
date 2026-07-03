@@ -14,6 +14,7 @@ import {
   ROE_PRICING,
 } from "../data/pricing";
 import OffersNotes from "./OffersNotes";
+import OffersGroupHunt from "./OffersGroupHunt";
 
 interface OffersCatalogProps {
   currentLang: Language;
@@ -143,6 +144,10 @@ export default function OffersCatalog({
           </div>
         </div>
 
+        <OffersGroupHunt translations={translations} />
+
+        <OffersNotes translations={translations} />
+
         <div className="mb-8">
           <p className="text-xs font-mono tracking-[0.2em] text-brand-cream/50 uppercase text-center mb-4">
             {translations.offers_hunt_select}
@@ -233,8 +238,6 @@ export default function OffersCatalog({
             </div>
           </motion.div>
         </AnimatePresence>
-
-        <OffersNotes translations={translations} />
       </div>
     </section>
   );
