@@ -186,6 +186,16 @@ export default function About({ translations }: AboutProps) {
               </motion.div>
             ))}
           </div>
+
+          <div className="flex justify-center mt-12">
+            <Link
+              to="/oferta"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-forest hover:bg-brand-forest/90 text-brand-cream font-sans text-xs font-bold tracking-widest uppercase rounded shadow-lg transition-colors duration-300"
+            >
+              <span>{translations.offers_cta}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
