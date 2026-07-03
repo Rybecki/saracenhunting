@@ -25,7 +25,7 @@ export default function OffersGroupHunt({ translations }: OffersGroupHuntProps) 
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-brand-dark/70 via-brand-dark/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent lg:opacity-0" />
 
           <div className="absolute top-4 right-4 bg-brand-dark/90 border border-brand-gold/30 rounded px-3 py-1.5 backdrop-blur-sm">
             <span className="text-[10px] text-brand-cream/60 uppercase tracking-widest block text-right font-mono -mb-1">
